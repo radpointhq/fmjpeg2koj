@@ -603,7 +603,7 @@ OFCondition DJPEG2KDecoderBase::determineDecompressedColorModel(
   return result;
 }
 
-#if PACKAGE_VERSION_NUMBER > 368
+#if PACKAGE_VERSION_NUMBER > 369
 Uint16 DJPEG2KDecoderBase::decodedBitsAllocated(Uint16 bitsAllocated, Uint16 bitsStored) const
 {
   // this codec does not support images with less than 2 bits per sample

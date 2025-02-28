@@ -11,17 +11,18 @@ set(fmjpeg2k_VERSION "${fmjpeg2k_VERSION_MAJOR}.${fmjpeg2k_VERSION_MINOR}.${fmjp
 
 option(BUILD_SHARED_LIBS "Build fmjpeg2k shared library and link executables against it." ON)
 
-set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD 17)
 
 if(NOT BUILD_SHARED_LIBS)
 add_definitions(-DOPJ_STATIC)
 endif()
 
-find_package(DCMTK)
-find_package(OpenJPEG)
+find_package(DCMTK REQUIRED)
+find_package(OpenJPEG REQUIRED)
+find_package(ZLIB REQUIRED)
 
 INCLUDE_DIRECTORIES(${FMJPEG2K}/include ${CMAKE_SOURCE_DIR}/include ${DCMTK_INCLUDE_DIRS} ${OPENJPEG_INCLUDE_DIRS})
-LINK_DIRECTORIES(${FMJPEG2K}/${CMAKE_INSTALL_LIBDIR})
+LINK_DIRECTORIES(${FMJPEG2K}/${CMAKE_INSTALL_LIBDIR} ${DCMTK_ROOT}/${CMAKE_INSTALL_LIBDIR})
 
 add_definitions(-Dfmjpeg2k_EXPORTS)
 
@@ -58,6 +59,7 @@ ADD_EXECUTABLE(dcmcjp2k dcmcjp2k.cc)
 TARGET_LINK_LIBRARIES(dcmcjp2k
 	${DCMTK_LIBRARIES}
 	${OPENJPEG_LIBRARIES}
+	ZLIB::ZLIB
 	fmjpeg2k
 	)
 
@@ -65,6 +67,7 @@ ADD_EXECUTABLE(dcmdjp2k dcmdjp2k.cc)
 TARGET_LINK_LIBRARIES(dcmdjp2k
 	${DCMTK_LIBRARIES}
 	${OPENJPEG_LIBRARIES}
+	ZLIB::ZLIB
 	fmjpeg2k
 	)
 

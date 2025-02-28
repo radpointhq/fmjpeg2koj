@@ -248,7 +248,7 @@ public:
     DcmItem *dataset,
     OFString &decompressedColorModel) const;
 
-#if PACKAGE_VERSION_NUMBER > 368
+#if PACKAGE_VERSION_NUMBER > 369
   /** determines the effective value of BitsAllocated that a dataset will have
    *  after decompression of an image with the given values for bitsAllocated
    *  and bitsStored. This may differ from the bitsAllocated parameter for example

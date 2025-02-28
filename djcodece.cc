@@ -284,7 +284,7 @@ OFCondition DJPEG2KEncoderBase::determineDecompressedColorModel(
 	return EC_IllegalCall;
 }
 
-#if PACKAGE_VERSION_NUMBER > 368
+#if PACKAGE_VERSION_NUMBER > 369
 Uint16 DJPEG2KEncoderBase::decodedBitsAllocated(Uint16 bitsAllocated, Uint16 bitsStored) const
 {
 	return 0;
