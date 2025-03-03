@@ -11,10 +11,8 @@ set(fmjpeg2k_VERSION "${fmjpeg2k_VERSION_MAJOR}.${fmjpeg2k_VERSION_MINOR}.${fmjp
 
 option(BUILD_SHARED_LIBS "Build fmjpeg2k shared library and link executables against it." ON)
 
-set (CMAKE_CXX_STANDARD 17)
-
 if(NOT BUILD_SHARED_LIBS)
-add_definitions(-DOPJ_STATIC)
+  add_definitions(-DOPJ_STATIC)
 endif()
 
 find_package(DCMTK REQUIRED)
@@ -72,7 +70,6 @@ TARGET_LINK_LIBRARIES(dcmdjp2k
 	)
 
 message(STATUS "DCMTK_INCLUDE_DIRS: ${DCMTK_INCLUDE_DIRS}")
-message(STATUS "DCMTK_LIBRARY_DIRS: ${DCMTK_LIB_DIRS}")
 message(STATUS "DCMTK_LIBRARIES: ${DCMTK_LIBRARIES}")
 add_library(fmjpeg2k ${fmjpeg2k_SRCS})
 set(fmjpeg2k_LIBRARY_NAME fmjpeg2k)
@@ -80,6 +77,10 @@ TARGET_LINK_LIBRARIES(fmjpeg2k
 	${DCMTK_LIBRARIES}
 	${OPENJPEG_LIBRARIES}
 	)
+
+target_compile_features(fmjpeg2k PUBLIC cxx_std_11)
+target_compile_features(dcmcjp2k PUBLIC cxx_std_11)
+target_compile_features(dcmdjp2k PUBLIC cxx_std_11)
 
 include(GenerateExportHeader)
 generate_export_header(fmjpeg2k)
