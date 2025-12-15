@@ -284,7 +284,7 @@ OFCondition DJPEG2KEncoderBase::determineDecompressedColorModel(
 	return EC_IllegalCall;
 }
 
-#if PACKAGE_VERSION_NUMBER > 369
+#if PACKAGE_VERSION_NUMBER > 368
 Uint16 DJPEG2KEncoderBase::decodedBitsAllocated(Uint16 bitsAllocated, Uint16 bitsStored) const
 {
 	return 0;
@@ -1017,6 +1017,9 @@ OFCondition DJPEG2KEncoderBase::compressRenderedFrame(
 			bitsAllocated = 16;
 			pixelRepresentation = 1;
 			break;
+        default:
+            // we don't support images with > 16 bits/sample
+            return EC_J2KUnsupportedBitDepth;
 	}
 
 	result = frametoimage(buffer, 1, photometricInterpretation, samplesPerPixel, width, height, bitsAllocated, pixelRepresentation, &parameters, &image);	

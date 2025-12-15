@@ -6,7 +6,7 @@ include(GNUInstallDirs)
 
 set (fmjpeg2k_VERSION_MAJOR 1)
 set (fmjpeg2k_VERSION_MINOR 0)
-set (fmjpeg2k_VERSION_BUILD 3)
+set (fmjpeg2k_VERSION_BUILD 4)
 set(fmjpeg2k_VERSION "${fmjpeg2k_VERSION_MAJOR}.${fmjpeg2k_VERSION_MINOR}.${fmjpeg2k_VERSION_BUILD}")
 
 option(BUILD_SHARED_LIBS "Build fmjpeg2k shared library and link executables against it." ON)

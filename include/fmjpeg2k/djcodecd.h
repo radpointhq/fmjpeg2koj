@@ -79,7 +79,7 @@ public:
     DcmPolymorphOBOW& uncompressedPixelData,
     const DcmCodecParameter * cp,
     const DcmStack& objStack,
-    OFBool& removeOldRep) const;
+    OFBool& removeOldRep) const override;
 
   /** decompresses a single frame from the given pixel sequence and
    *  stores the result in the given buffer.
@@ -115,7 +115,7 @@ public:
     Uint32& startFragment,
     void *buffer,
     Uint32 bufSize,
-    OFString& decompressedColorModel) const;
+    OFString& decompressedColorModel) const override;
 
   /** compresses the given uncompressed DICOM image and stores
    *  the result in the given pixSeq element.
@@ -164,7 +164,7 @@ public:
     DcmPixelSequence * & pixSeq,
     const DcmCodecParameter *cp,
     DcmStack & objStack,
-    OFBool& removeOldRep) const;
+    OFBool& removeOldRep) const override;
 
   /** transcodes (re-compresses) the given compressed DICOM image and stores
    *  the result in the given toPixSeq element.
@@ -215,7 +215,7 @@ public:
     DcmPixelSequence * & toPixSeq,
     const DcmCodecParameter * cp,
     DcmStack & objStack,
-    OFBool& removeOldRep) const;
+    OFBool& removeOldRep) const override;
 
   /** checks if this codec is able to convert from the
    *  given current transfer syntax to the given new
@@ -226,7 +226,7 @@ public:
    */
   virtual OFBool canChangeCoding(
     const E_TransferSyntax oldRepType,
-    const E_TransferSyntax newRepType) const;
+    const E_TransferSyntax newRepType) const override;
 
   /** determine color model of the decompressed image
    *  @param fromParam representation parameter of current compressed
@@ -246,9 +246,9 @@ public:
     DcmPixelSequence *fromPixSeq,
     const DcmCodecParameter *cp,
     DcmItem *dataset,
-    OFString &decompressedColorModel) const;
+    OFString &decompressedColorModel) const override;
 
-#if PACKAGE_VERSION_NUMBER > 369
+#if PACKAGE_VERSION_NUMBER > 368
   /** determines the effective value of BitsAllocated that a dataset will have
    *  after decompression of an image with the given values for bitsAllocated
    *  and bitsStored. This may differ from the bitsAllocated parameter for example
