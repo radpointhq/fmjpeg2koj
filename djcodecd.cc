@@ -392,6 +392,10 @@ OFCondition DJPEG2KDecoderBase::decodeFrame(
     } /* while */
   }
 
+  // sanity check
+  if (compressedSize == 0)
+      result = EC_CorruptedData;
+
   // get the compressed data
   if (result.good())
   {
